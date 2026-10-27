@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import shutil
 import tempfile
-import urllib.request
+import requests
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,8 +55,9 @@ def install(models=None):
         temp = Path(temp)
         archive = temp / "model.zip"
         size = 0
-        with urllib.request.urlopen(URL, timeout=45) as response, archive.open("wb") as output:
-            while chunk := response.read(1024 * 1024):
+        with requests.get(URL, stream=True, timeout=(15, 45)) as response, archive.open("wb") as output:
+            response.raise_for_status()
+            for chunk in response.iter_content(1024 * 1024):
                 size += len(chunk)
                 if size > MAX_DOWNLOAD:
                     raise ValueError("La descarga supera el tamaño esperado")
