@@ -1,0 +1,21 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Generated and personal files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+backups/
+work/
+outputs/
+dist/
+*.log
+*.mp3
+*.mp4
+# Downloaded third-party models
+backend/models/

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Configuración Doblaje Latino</title>
+  <style>
+    body {
+      width: 320px;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      font-size: 13px;
+    }
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #60a5fa;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .status-online { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .status-offline { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+    select, input[type="text"], input[type="password"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px 10px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #f8fafc;
+      font-size: 12px;
+      outline: none;
+    }
+    select:focus, input:focus {
+      border-color: #3b82f6;
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    input[type="range"] {
+      flex: 1;
+    }
+    .help-text {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 3px;
+    }
+    .btn-save {
+      width: 100%;
+      padding: 8px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .btn-save:hover { background: #1d4ed8; }
+    .footer {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 11px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎙️ YouTube Latam Dub</h2>
+
+  <div id="status-badge" class="status-badge status-offline">
+    <div class="status-dot"></div>
+    <span id="status-text">Comprobando servidor...</span>
+  </div>
+
+  <div class="form-group">
+    <label for="source-language">Idioma de los subtítulos visibles</label>
+    <select id="source-language">
+      <option value="auto">Automático → audio en español</option>
+      <option value="es">Subtítulos en español</option>
+      <option value="en">Subtítulos en inglés</option>
+    </select>
+    <div class="help-text">Dejá Automático al cambiar de video. El inglés se traduce en tu computadora; la voz de salida siempre es en español.</div>
+  </div>
+
+  <div class="form-group">
+    <label for="voice-select">Voz Neuronal (Acento Latino)</label>
+    <select id="voice-select">
+      <option value="es-MX-DaliaNeural">México - Dalia (Femenina / Neutro)</option>
+      <option value="es-MX-JorgeNeural">México - Jorge (Masculino / Neutro)</option>
+      <option value="es-AR-TomasNeural">Argentina - Tomás (Masculino)</option>
+      <option value="es-AR-ElenaNeural">Argentina - Elena (Femenina)</option>
+      <option value="es-CO-GonzaloNeural">Colombia - Gonzalo (Masculino)</option>
+      <option value="es-CO-SalomeNeural">Colombia - Salomé (Femenina)</option>
+      <option value="es-CL-LorenzoNeural">Chile - Lorenzo (Masculino)</option>
+      <option value="es-PE-AlexNeural">Perú - Alex (Masculino)</option>
+      <option value="es-ES-AlvaroNeural">España - Álvaro (Castellano)</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Velocidad de la voz: <span id="rate-label">Normal</span></label>
+    <div class="slider-container">
+      <input type="range" id="rate-slider" min="-20" max="40" step="5" value="0">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Volumen video original de fondo: <span id="vol-label">18%</span></label>
+    <div class="slider-container">
+      <input type="range" id="vol-slider" min="0" max="40" step="2" value="18">
+    </div>
+    <div class="help-text">Se baja automáticamente cuando la voz habla.</div>
+  </div>
+
+  <div class="form-group">
+    <label for="api-key">Gemini API Key (Opcional)</label>
+    <input type="password" id="api-key" placeholder="AIzaSy...">
+    <div class="help-text">No hace falta para inglés → español con el traductor local instalado.</div>
+  </div>
+
+  <button id="btn-save" class="btn-save">Guardar Configuración</button>
+
+  <div class="footer">YouTube Latam Dub • Local Fast Server</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

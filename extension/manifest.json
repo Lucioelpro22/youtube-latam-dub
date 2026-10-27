@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Latam Dub - Doblaje Latino",
+  "version": "1.3.0",
+  "description": "Lee subtítulos de YouTube en español latino, con traducción local de inglés a español. Versión beta.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "http://127.0.0.1:8000/*",
+    "http://localhost:8000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Configurar Doblaje Latino"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "version_name": "1.3.0-beta.1"
+}

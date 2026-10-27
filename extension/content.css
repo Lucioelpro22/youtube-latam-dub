@@ -1,0 +1,99 @@
+/* YouTube Latam Dub - UI Overlay Styles */
+
+#yt-latam-dub-pill {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  background: rgba(18, 18, 24, 0.88);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 24px;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  user-select: none;
+  transition: all 0.25s ease;
+}
+
+#yt-latam-dub-pill:hover {
+  background: rgba(28, 28, 38, 0.95);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
+}
+
+#yt-latam-dub-pill.active {
+  border-color: #3b82f6;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.45);
+}
+
+.yt-dub-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #64748b;
+}
+
+.yt-dub-dot.active {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse-dot 1.8s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 0.7; transform: scale(0.95); }
+}
+
+.yt-dub-toggle-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.yt-dub-toggle-btn:hover {
+  background: #1d4ed8;
+}
+
+.yt-dub-toggle-btn.off {
+  background: #475569;
+}
+
+#yt-latam-subtitle-box {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9998;
+  max-width: 80%;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(6px);
+  color: #f1f5f9;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  line-height: 1.4;
+  border-left: 3px solid #3b82f6;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+#yt-latam-subtitle-box.visible {
+  opacity: 1;
+}
